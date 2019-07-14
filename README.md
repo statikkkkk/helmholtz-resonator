@@ -42,10 +42,23 @@ opt_j_pipe = hr.calculate_optimal_j_pipe_length()
 ```
 
 # Analysis
+## Adding an ideal J-Pipe
 I found the optimal length for J-pipe for my car would be around 0.9m (33 inch), and I ran some simulation to visualize the effect.
 <img src="plots/jpipe_ideal.png" width="500">
 
 Adding a 33 inch J-pipe will completely cancel out the soundwave.
+
+## How does J-Pipe affect other frequencies?
+Unfortuanately, I was not able to find a 33 inch J-Pipe off the shelf; the longested J-Pipe I was able to find is from NoDrone in 24 inch. So I wanted to investigate on how effective would the 24 inch J-Pipe be.
+
+The following plots compares the total power of the signal, before and after the 24 inch J-Pipe.
+<img src="plots/total_impact.png" width="500">
+
+The total power is calculated as the Root Mean Square of the soundwave, 
+```
+Power = np.sqrt(np.mean(x **2))
+```
+We can see that, with the introduction of a 24 inch J-Pipe, the total power of the signal is minimized at around 3000 RPM, while minimal reduction is observed at 1900 RPM, which is where my drone happens. Simply put, a 24 inch J-Pipe would not be able to solve my problem. I'd have to find a shop to customize it for me.
 
 # Future Work
 Now I just need to figure out how to fit two 33 inch stainless steel pipes under my car... Wish me luck.
